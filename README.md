@@ -15,6 +15,7 @@ This is a CV sub-task of mini-project EE6483, the main task is to complete a cat
     ```
     pip install -r requirements.txt
     ```
+2.Start by placing the Datasets folder in the root of your project folder.
 
 ## Usage
 
@@ -42,7 +43,7 @@ dataset:
   batch_size: 32
   use_mixup: true
   use_cutmix: true
-
+            
 model:
   name: "resnet50"
   pretrained: true
