@@ -15,7 +15,7 @@ This is a CV sub-task of mini-project EE6483, the main task is to complete a cat
     ```
     pip install -r requirements.txt
     ```
-2.Start by placing the Datasets folder in the root of your project folder.
+2. Start by placing the Datasets folder in the root of your project folder.
 
 ## Usage
 
