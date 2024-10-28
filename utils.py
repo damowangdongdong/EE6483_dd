@@ -177,8 +177,7 @@ def test_model(model, dataloader, device, is_custom=False):
             pdf.set_font("Arial", size=12)
             output_list = output.numpy().tolist()
             output_str = ', '.join([f'{val:.4f}' for val in output_list])
-            prediction_label = '猫' if prediction.numpy() == 0 else '狗'
-            pdf.cell(200, 10, f"Output: [{output_str}], Prediction: {prediction_label}", ln=True)
+            pdf.cell(200, 10, f"Output: [{output_str}], Prediction: {prediction.numpy()}", ln=True)
             os.remove(img_path)
 
         for i in range(min(2, len(incorrect_images))):
@@ -195,8 +194,7 @@ def test_model(model, dataloader, device, is_custom=False):
             pdf.set_font("Arial", size=12)
             output_list = output.numpy().tolist()
             output_str = ', '.join([f'{val:.4f}' for val in output_list])
-            prediction_label = '猫' if prediction.numpy() == 0 else '狗'
-            pdf.cell(200, 10, f"Output: [{output_str}], Prediction: {prediction_label}", ln=True)
+            pdf.cell(200, 10, f"Output: [{output_str}], Prediction: {prediction.numpy()}", ln=True)
             os.remove(img_path)
 
         pdf.output(pdf_filename)
