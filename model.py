@@ -30,9 +30,9 @@ def get_model(model_name, num_classes=2, pretrained=False):
     elif model_name == 'convnextv2':
         model = timm.create_model('convnextv2_base', pretrained=pretrained)
         if num_classes == 2:
-            model.head = torch.nn.Linear(model.head.in_features, 1)  # 修改最后一层为单一神经元
+            model.head = torch.nn.Linear(model.num_features, 1)  # 修改最后一层为单一神经元
         else:
-            model.head = torch.nn.Linear(model.head.in_features, num_classes)
+            model.head = torch.nn.Linear(model.num_features, num_classes)
     else:
         raise ValueError(f"Unsupported model name: {model_name}")
     
