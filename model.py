@@ -33,6 +33,11 @@ def get_model(model_name, num_classes=2, pretrained=False):
             model.head = torch.nn.Linear(model.num_features, 1)  # 修改最后一层为单一神经元
         else:
             model.head = torch.nn.Linear(model.num_features, num_classes)
+        model.head = torch.nn.Sequential(
+            torch.nn.AdaptiveAvgPool2d((1, 1)),
+            torch.nn.Flatten(),
+            torch.nn.Linear(model.num_features, num_classes)
+        )
     else:
         raise ValueError(f"Unsupported model name: {model_name}")
     
