@@ -21,6 +21,26 @@ def get_model(model_name, num_classes=2, pretrained=False):
             model.fc = torch.nn.Linear(model.fc.in_features, 1)  # 修改最后一层为单一神经元
         else:
             model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
+    elif model_name == 'resnet34':
+        weights = models.ResNet34_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.resnet34(weights=weights)
+        if num_classes == 2:
+            model.fc = torch.nn.Linear(model.fc.in_features, 1)  # 修改最后一层为单一神经元
+        else:
+            model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
+    elif model_name == 'resnet18':
+        weights = models.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.resnet18(weights=weights)
+        if num_classes == 2:
+            model.fc = torch.nn.Linear(model.fc.in_features, 1)  # 修改最后一层为单一神经元
+        else:
+            model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
+    elif model_name == 'resnet18_untrained':
+        model = models.resnet18(weights=None)
+        if num_classes == 2:
+            model.fc = torch.nn.Linear(model.fc.in_features, 1)  # 修改最后一层为单一神经元
+        else:
+            model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
     elif model_name == 'vit_b':
         model = timm.create_model('vit_base_patch16_224', pretrained=pretrained)
         if num_classes == 2:
